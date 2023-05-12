@@ -55,23 +55,6 @@ app.patch("/product/:id/upvotes", async (req, res) => {
   }
 });
 
-app.post("/product", async (req, res) => {
-  try {
-    const product = req.body;
-    const result = await ProductService.addProduct(product);
-    res.status(200).send(result);
-  } catch (err) {
-    res
-      .status(err.status || 400)
-      .send(
-        `error code of mongoose is ${err.message.slice(
-          0,
-          5
-        )} and error is ${err.message.slice(6)}`
-      );
-  }
-});
-
 app.patch("/product/:id", async (req, res) => {
   try {
     const id = req.params.id;
